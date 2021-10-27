@@ -16,7 +16,7 @@
     </div>
 
     <div v-if="employees.data.length">
-      <table class="table table-hover list-emp">
+      <table class="table table-striped table-hover list-emp">
         <thead class="bg-info">
           <tr>
             <th scope="col">ID</th>
@@ -59,10 +59,10 @@
 
 <script>
 export default {
-  async asyncData({ store }) {
-    const employees = await store.$axios.$get('/list')
+  async asyncData(context) {
+    const {data} = await context.$axios.get('/list')
     return {
-      employees,
+      employees: data
     }
   },
   mounted() {
@@ -85,17 +85,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-h1{
-  margin-left: 10px;
-}
-.btn-add{
-  margin-right: 10px;
-}
-.list-emp{
-  width: 95%;
-    display: inline-table;
-    margin-left: 30px;
-    align-content: center;
-}
-</style>

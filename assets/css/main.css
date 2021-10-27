@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+  margin-left: 10px;
+}
+
+.btn-add {
+  margin-right: 10px;
+}
+
+.list-emp{
+  width: 90%;
+  margin-left: 50px;
+}
+
+form{
+    margin-left: 50px;
+}

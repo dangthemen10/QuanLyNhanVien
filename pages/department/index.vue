@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-between align-items-center">
       <h1>Department</h1>
-      <nuxt-link to="/department/add" class="btn btn-success"
+      <nuxt-link to="/department/add" class="btn btn-success btn-add"
         >Add New</nuxt-link
       >
     </div>
@@ -16,8 +16,8 @@
     </div>
 
     <div v-if="departments.data.length">
-      <table class="table is-bordered is-fullwidth is-hoverable">
-        <thead>
+      <table class="table table-hover list-emp">
+        <thead class="bg-info">
           <tr>
             <th scope="col">#</th>
             <th scope="col">ID</th>
@@ -55,10 +55,10 @@
 
 <script>
 export default {
-  async asyncData({ store }) {
-    const departments = await store.$axios.$get('/departments')
+  async asyncData(context) {
+    const {data} = await context.$axios.get('/departments')
     return {
-      departments,
+      departments: data
     }
   },
   mounted() {

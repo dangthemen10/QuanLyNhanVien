@@ -1,37 +1,43 @@
 <template>
   <div>
     <h1>Department Article</h1>
-    <hr>
+    <hr />
 
-    <div class="row">
+    <div class="row-6">
       <div class="col-md-6">
-        <form action=""
-          method="post"
-          @submit.prevent="submitForm()">
-
+        <form action="" method="post" @submit.prevent="submitForm()">
           <div class="form-group">
             <label for="">Code</label>
-            <input v-model="deptId" type="text"
+            <input
+              v-model="deptId"
+              type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors && errors.deptId }">
-            <div v-if="errors && errors.deptId" class="invalid-feedback">
-              {{ errors.deptId.msg }}
+              :class="{ 'is-invalid': errors }"
+            />
+            <div v-if="errors" class="invalid-feedback">
+              {{ errors.message }}
             </div>
           </div>
 
           <div class="form-group">
             <label for="">Name</label>
-            <input v-model="deptName" type="text"
+            <input
+              v-model="deptName"
+              type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors && errors.deptName }">
-            <div v-if="errors && errors.deptName" class="invalid-feedback">
-              {{ errors.deptName.msg }}
+              :class="{ 'is-invalid': errors }"
+            />
+            <div v-if="errors" class="invalid-feedback">
+              {{ errors.message }}
             </div>
           </div>
 
-          <input type="submit" value="Submit" class="btn btn-primary mr-3">
-          <nuxt-link :to="'/department/' + $route.params.id" class="btn btn-secondary mr-3">Cancel</nuxt-link>
-
+          <input type="submit" value="Submit" class="btn btn-primary mr-2" />
+          <nuxt-link
+            :to="'/department/' + $route.params.id"
+            class="btn btn-secondary"
+            >Cancel</nuxt-link
+          >
         </form>
       </div>
     </div>
@@ -40,39 +46,45 @@
 
 <script>
 export default {
-//   middleware: 'auth',
-  async asyncData(context){
-    const {data} = await context.$axios.$get('/department/' + context.route.params.id)
+  //   middleware: 'auth',
+  async asyncData(context) {
+    const { data } = await context.$axios.get(
+      '/department/' + context.route.params.id
+    )
     return {
-      department : data
+      department: data,
     }
   },
-  data(){
-    return{
-      errors:null,
-      deptId:null,
-      deptName:null,
+  data() {
+    return {
+      errors: null,
+      deptId: null,
+      deptName: null,
     }
   },
-  mounted(){
-    this.deptId = this.department.deptId
-    this.deptName = this.department.deptName
+  mounted() {
+    this.deptId = this.department.data.deptId
+    this.deptName = this.department.data.deptName
   },
-  methods:{
-    submitForm(){
-      this.$axios.put( '/department/' + this.$route.params.id , {
+  methods: {
+    submitForm() {
+      this.$axios
+        .put('/department/' + this.$route.params.id, {
           deptId: this.deptId,
-          deptName: this.deptName
+          deptName: this.deptName,
         })
         .then((response) => {
-          if(response.status === 200){
-            this.$router.push({ name:'department-id', params:{ updated:'yes', id: this.$route.params.id } })
+          if (response.status === 200) {
+            this.$router.push({
+              name: 'department-id',
+              params: { updated: 'yes', id: this.$route.params.id },
+            })
           }
         })
-        .catch( (error) => {
-          alert(error)
-        });
-    }
-  }
+        .catch((error) => {
+          this.errors = error
+        })
+    },
+  },
 }
 </script>

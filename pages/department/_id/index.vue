@@ -1,37 +1,36 @@
 <template>
-  <div>
-    <h1>Department Details</h1>
-
-    <hr />
-
+  <div class="row-6">
     <div v-if="$route.params.updated == 'yes'" class="alert alert-success">
       Record updated successfully
     </div>
-
-    <h2>{{ department.data.deptId }}</h2>
-
-    <h2>{{ department.data.deptName }}</h2>
-
-    <hr />
-    <div class="d-flex justify-content-between">
-      <div>
+    <nuxt-link to="/department" class="btn btn-secondary ml-5 mb-3"
+      >Back</nuxt-link
+    >
+    <div class="card bg-light ml-5" style="width: 18rem">
+      <img class="card-img-top" src="https://wiki.tino.org/wp-content/uploads/2021/07/word-image-653.png" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Department Details</h5>
+        <p class="card-text">Information of {{ department.data.deptId }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Code: {{ department.data.deptId }}</li>
+        <li class="list-group-item">Name: {{ department.data.deptName }}</li>
+      </ul>
+      <div class="card-body">
         <nuxt-link
           :to="'/department/' + department.data.id + '/update'"
-          class="btn btn-primary mr-3"
+          class="btn btn-primary ml-4 mr-4"
           >Update</nuxt-link
         >
-        <button class="btn btn-danger" @click="deleteRecord()">Delete</button>
+        <button class="btn btn-danger mr-3" @click="deleteRecord()">Delete</button>
       </div>
-      <nuxt-link to="/department" class="btn btn-secondary mr-3"
-        >Back to Department</nuxt-link
-      >
     </div>
   </div>
 </template>
 
 <script>
 export default {
-//   middleware: 'auth',
+  //   middleware: 'auth',
   async asyncData(context) {
     const { data } = await context.$axios.get(
       '/department/' + context.route.params.id
@@ -42,7 +41,7 @@ export default {
   },
   mounted() {
     this.$route.params.updated = 'yes'
-    },
+  },
   methods: {
     deleteRecord() {
       if (confirm('Are you sure?') === true) {

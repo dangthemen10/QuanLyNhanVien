@@ -12,10 +12,10 @@
               v-model="deptId"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors && errors.deptId }"
+              :class="{ 'is-invalid': errors}"
             />
-            <div v-if="errors && errors.deptId" class="invalid-feedback">
-              {{ errors.deptId.message }}
+            <div v-if="errors" class="invalid-feedback">
+              {{ errors.message }}
             </div>
           </div>
 
@@ -25,10 +25,10 @@
               v-model="deptName"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors && errors.deptName }"
+              :class="{ 'is-invalid': errors}"
             />
-            <div v-if="errors && errors.deptName" class="invalid-feedback">
-              {{ errors.deptName.message }}
+            <div v-if="errors" class="invalid-feedback">
+              {{ errors.message }}
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default {
   //   middleware: 'auth',
   data() {
     return {
-      errors: null,
+      errors: {},
       deptId: null,
       deptName: null,
     }
@@ -68,7 +68,7 @@ export default {
           }
         })
         .catch((error) => {
-          alert(error)
+          this.errors = error
         })
     },
   },
