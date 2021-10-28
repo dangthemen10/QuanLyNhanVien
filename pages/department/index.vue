@@ -69,7 +69,7 @@ export default {
     deleteRecord(id) {
       if (confirm('Are you sure?') === true) {
         this.$axios
-          .delete('/department/' + id)
+          .delete(`/department/${id}`)
           .then(() => {
             this.$router.app.refresh()
           })

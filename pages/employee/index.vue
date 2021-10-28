@@ -2,6 +2,20 @@
   <div>
     <div class="d-flex justify-content-between align-items-center">
       <h1>Employee</h1>
+      <form id="form-search" action="" method="post" @submit.prevent="filtered()">
+        <div class="input-group">
+          <div class="form-outline">
+            <input id="search-input"
+                v-model="search"
+                type="search"
+                class="form-control"
+              />
+          </div>
+          <button id="search-button" type="submit" class="btn btn-primary">
+            Search
+          </button>
+      </div>
+    </form>
       <nuxt-link to="/employee/add" class="btn btn-success btn-add"
         >Add New</nuxt-link
       >
@@ -15,8 +29,8 @@
       Record deleted successfully
     </div>
 
-    <div v-if="employees.data.length">
-      <table class="table table-hover list-emp">
+    <div v-if="!employees.data.length" class="alert alert-info">No records found.</div>
+      <table class="table table-hover list-emp" >
         <thead class="bg-info">
           <tr>
             <th scope="col">#</th>
@@ -33,7 +47,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="emp in employees.data" :key="emp.id">
+          <tr v-for="emp in filteredList" :key="emp.id">
             <td>{{ emp.id }}</td>
             <td>
               <nuxt-link :to="`/employee/${emp.id}`">
@@ -61,9 +75,11 @@
           </tr>
         </tbody>
       </table>
-    </div>
 
-    <div v-else class="alert alert-info">No records found.</div>
+    <div class="btn-wrapper">
+      <button class="btn-paging" type="button" :disabled="currentPage === 1" @click="changePage(-1)">Previous</button>
+      <button class="btn-paging" type="button" :disabled="currentPage === 4" @click="changePage(1)">Next</button>
+    </div>
   </div>
 </template>
 
@@ -75,24 +91,50 @@ export default {
       employees: data
     }
   },
-  mounted() {
-    this.$route.params.created = 'no'
-    this.$route.params.deleted = 'yes'
+  data() {
+    return{
+      search: '',
+      pages: [],
+      prePage: 5,
+      currentPage: 1
+    }
+  },
+  computed: {
+    filteredList() {
+      const star = (this.currentPage - 1) * this.prePage
+      const end = this.currentPage * this.prePage
+      const result = this.employees.data.slice(star, end)
+      return result
+    }
   },
   methods: {
+    filtered(){
+      this.$axios.get(`filter?name=${this.search}`).then((response) => {
+        this.list = this.list.concat(response.data.data)
+        this.employees = response.data
+      })
+    },
     deleteRecord(id) {
-      alert(id)
       if (confirm('Are you sure?') === true) {
         this.$axios
           .delete(`/employee/${id}`)
-          .then(() => {
-            this.$router.app.refresh()
-          })
+          .then((response) => {
+          if (response.status === 200) {
+            this.$router.push({
+              name: 'employee',
+              params: { deleted: 'yes', created: 'no'}
+            })
+          }
+          this.$router.app.refresh()
+        })
           .catch((error) => {
             alert(error.message)
           })
       }
     },
+    changePage(num) {
+      this.currentPage = this.currentPage + num
+    }
   }
 }
 </script>

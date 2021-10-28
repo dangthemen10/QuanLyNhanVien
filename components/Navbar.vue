@@ -1,6 +1,6 @@
 <template>
-    <div class="mb-5">
-    <b-navbar toggleable="lg" type="dark" variant="dark" sticky>
+    <div class="mb-2">
+    <b-navbar toggleable="lg" type="dark" variant="dark">
         <b-navbar-brand href="/">AppDemo</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

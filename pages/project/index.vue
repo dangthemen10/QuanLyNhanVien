@@ -28,7 +28,7 @@
           <tr v-for="pro in projects.data" :key="pro.id">
             <td>{{ pro.id }}</td>
             <td>
-              <nuxt-link :to="'/project/' + pro.id">
+              <nuxt-link :to="`/project/${pro.id}`">
                 {{ pro.projectName }}
               </nuxt-link>
             </td>
@@ -67,7 +67,7 @@ export default {
     deleteRecord(id) {
       if (confirm('Are you sure?') === true) {
         this.$axios
-          .delete('/project/' + id)
+          .delete(`/project/${id}`)
           .then(() => {
             this.$router.app.refresh()
           })

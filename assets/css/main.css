@@ -12,12 +12,20 @@ h1 {
 }
 
 .list-emp {
-  width: 95%;
-  margin-left: 25px;
+  width: 96%;
+  margin-left: 20px;
 }
 
 form {
   margin-left: 50px;
+}
+
+#form-search {
+  margin-left: 700px;
+}
+
+#search-input {
+  text-align: left;
 }
 
 #radios {
@@ -50,37 +58,52 @@ form {
 }
 
 .card-info {
-  width: 35rem;
-  margin-left: 240px;
+  width: 30rem;
+  margin-left: 120px;
   margin-bottom: 20px;
 }
 
 .btn-back {
-  margin-left: 240px;
-  margin-bottom: 5px;
+  margin-left: 30px;
+  margin-bottom: 1px;
 }
 
 .btn-delete {
-  margin-left: 70px;
+  margin-left: 50px;
 }
 
 .btn-update {
-  margin-left: 70px;
-  margin-right: 60px;
+  margin-left: 90px;
+  margin-right: 40px;
 }
 
-#tag-b-birth {
-  padding-left: 60px;
+.btn-wrapper {
+  margin-left: 40%;
 }
 
-#tag-b-phone {
-  padding-left: 60px;
+.btn-paging {
+  color: white;
+  font-size: 16px;
+  background-color: #4456f7;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
 }
 
-#tag-b-group {
-  padding-left: 60px;
+.btn-paging:hover {
+  background-color: #1709e2;
 }
 
-#tag-b-gender {
-  padding-left: 60px;
+.btn-paging:focus {
+  outline: none;
+}
+
+.btn-paging:active {
+  background-color: #2b04db;
+}
+
+.btn-paging:disabled {
+  background: #ada6a6;
 }

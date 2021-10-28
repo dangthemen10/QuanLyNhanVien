@@ -31,7 +31,7 @@
           <tr v-for="emp in employees.data" :key="emp.id">
             <td>{{ emp.id }}</td>
             <td>
-              <nuxt-link :to="'/department/' + emp.id">
+              <nuxt-link :to="`/employee/${emp.id}`">
                 {{ emp.fullName }}
               </nuxt-link>
             </td>
@@ -40,7 +40,7 @@
             <td>{{ emp.projectName }}</td>
             <td>
               <nuxt-link
-                :to="'/department/' + emp.id + '/update'"
+                :to="`/employee/${emp.id}/update`"
                 class="btn btn-primary mr-3"
                 >Update</nuxt-link
               >
@@ -73,7 +73,7 @@ export default {
     deleteRecord(id) {
       if (confirm('Are you sure?') === true) {
         this.$axios
-          .delete('/employee/' + id)
+          .delete(`/employee/${id}`)
           .then(() => {
             this.$router.app.refresh()
           })
