@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h1>Add New Department</h1>
+    <h1>Add New Group</h1>
     <hr />
 
     <div class="row-6">
       <div class="col-md-6">
         <form action="" method="post" @submit.prevent="submitForm()">
           <div class="form-group">
-            <label for="">Code</label>
+            <label for="">Role</label>
             <input
-              v-model="deptId"
+              v-model="roleGroup"
               type="text"
               class="form-control"
               :class="{ 'is-invalid': errors}"
@@ -22,7 +22,7 @@
           <div class="form-group">
             <label for="">Name</label>
             <input
-              v-model="deptName"
+              v-model="groupName"
               type="text"
               class="form-control"
               :class="{ 'is-invalid': errors}"
@@ -33,7 +33,7 @@
           </div>
 
           <input type="submit" value="Submit" class="btn btn-primary mr-3" />
-          <nuxt-link to="/department" class="btn btn-secondary mr-3"
+          <nuxt-link to="/group" class="btn btn-secondary mr-3"
             >Cancel</nuxt-link
           >
         </form>
@@ -48,21 +48,21 @@ export default {
   data() {
     return {
       errors: null,
-      deptId: null,
-      deptName: null,
+      roleGroup: null,
+      groupName: null,
     }
   },
   methods: {
     submitForm() {
       this.$axios
-        .post('/department', {
-          deptId: this.deptId,
-          deptName: this.deptName,
+        .post('/group', {
+          role: this.roleGroup,
+          name: this.groupName,
         })
         .then((response) => {
           if (response.status === 200) {
             this.$router.push({
-              name: 'department',
+              name: 'group',
               params: { created: 'yes' },
             })
           }

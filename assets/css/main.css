@@ -1,6 +1,6 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -11,11 +11,76 @@ h1 {
   margin-right: 10px;
 }
 
-.list-emp{
-  width: 90%;
+.list-emp {
+  width: 95%;
+  margin-left: 25px;
+}
+
+form {
   margin-left: 50px;
 }
 
-form{
-    margin-left: 50px;
+#radios {
+  width: 20px;
+  height: 16px;
+  margin-left: -26px;
+}
+
+.group-radio {
+  margin-left: 40px;
+  margin-right: 50px;
+}
+
+#radios1 {
+  width: 20px;
+  height: 16px;
+  margin-left: -26px;
+}
+
+#tag-birth {
+    margin-left: 62px;
+    color: green;
+}
+#gender {
+    margin-right: 10px;
+}
+
+#tag-gender {
+    color: green;
+}
+
+.card-info {
+  width: 35rem;
+  margin-left: 240px;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  margin-left: 240px;
+  margin-bottom: 5px;
+}
+
+.btn-delete {
+  margin-left: 70px;
+}
+
+.btn-update {
+  margin-left: 70px;
+  margin-right: 60px;
+}
+
+#tag-b-birth {
+  padding-left: 60px;
+}
+
+#tag-b-phone {
+  padding-left: 60px;
+}
+
+#tag-b-group {
+  padding-left: 60px;
+}
+
+#tag-b-gender {
+  padding-left: 60px;
 }
