@@ -6,7 +6,6 @@
     <div class="row-6">
       <div class="col-md-6">
         <form action="" method="post" @submit.prevent="submitForm()">
-
           <div class="form-project">
             <label for="">Name</label>
             <input
@@ -20,7 +19,11 @@
             </div>
           </div>
 
-          <input type="submit" value="Submit" class="btn btn-primary mr-2 mt-3" />
+          <input
+            type="submit"
+            value="Submit"
+            class="btn btn-primary mr-2 mt-3"
+          />
           <nuxt-link
             :to="`/project/${$route.params.id}`"
             class="btn btn-secondary mt-3"

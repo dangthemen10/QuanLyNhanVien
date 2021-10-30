@@ -54,9 +54,9 @@
 <script>
 export default {
   async asyncData(context) {
-    const {data} = await context.$axios.get('/projects')
+    const { data } = await context.$axios.get('/projects')
     return {
-      projects: data
+      projects: data,
     }
   },
   mounted() {

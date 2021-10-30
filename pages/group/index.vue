@@ -56,9 +56,9 @@
 <script>
 export default {
   async asyncData(context) {
-    const {data} = await context.$axios.get('/groups')
+    const { data } = await context.$axios.get('/groups')
     return {
-      groups: data
+      groups: data,
     }
   },
   mounted() {

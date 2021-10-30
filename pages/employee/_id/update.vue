@@ -18,7 +18,10 @@
             </div>
 
             <div class="form-group">
-              <label id="gender">Gender(<small id="tag-gender">{{gender}}</small>)</label>
+              <label id="gender"
+                >Gender(<small id="tag-gender">{{ gender }}</small
+                >)</label
+              >
 
               <label class="group-radio">
                 <input
@@ -44,8 +47,9 @@
             </div>
 
             <div class="form-group">
-              <small id="tag-birth">Birthday: {{dayOfBirth}}</small><br/>
-              <label >Birthday</label>
+              <small id="tag-birth">Birthday: {{ dayOfBirth }}</small
+              ><br />
+              <label>Birthday</label>
               <input v-model="dayOfBirth" type="date" />
             </div>
 
@@ -128,7 +132,9 @@
 export default {
   //   middleware: 'auth',
   async asyncData(context) {
-    const { data: dataEmployee } = await context.$axios.get('/employee/' + context.route.params.id)
+    const { data: dataEmployee } = await context.$axios.get(
+      '/employee/' + context.route.params.id
+    )
     const { data: dataDepartments } = await context.$axios.get('/departments')
     const { data: dataProjects } = await context.$axios.get('/projects')
     const { data: dataGroups } = await context.$axios.get('/groups')
@@ -136,7 +142,7 @@ export default {
       employee: dataEmployee.data,
       departments: dataDepartments.data,
       projects: dataProjects.data,
-      groups: dataGroups.data
+      groups: dataGroups.data,
     }
   },
   data() {
@@ -150,7 +156,7 @@ export default {
       phone: null,
       department: null,
       group: null,
-      project: null
+      project: null,
     }
   },
   mounted() {
@@ -176,7 +182,7 @@ export default {
           phone: this.phone,
           department: this.department,
           group: this.group,
-          project: this.project
+          project: this.project,
         })
         .then((response) => {
           if (response.status === 200) {

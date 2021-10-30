@@ -150,10 +150,10 @@ export default {
       project: null,
     }
   },
-  mounted(){
-    this.department = "Please, choose department"
-    this.group = "Please, choose group"
-    this.project = "Please, choose project"
+  mounted() {
+    this.department = 'Please, choose department'
+    this.group = 'Please, choose group'
+    this.project = 'Please, choose project'
   },
   methods: {
     submitForm() {

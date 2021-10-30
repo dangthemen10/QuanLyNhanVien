@@ -7,7 +7,11 @@
       >Back</nuxt-link
     >
     <div class="card bg-light ml-5" style="width: 18rem">
-      <img class="card-img-top" src="https://image.shutterstock.com/image-vector/group-people-icon-260nw-342536540.jpg" alt="Card image cap" />
+      <img
+        class="card-img-top"
+        src="https://image.shutterstock.com/image-vector/group-people-icon-260nw-342536540.jpg"
+        alt="Card image cap"
+      />
       <div class="card-body">
         <h5 class="card-title">Project Details</h5>
         <p class="card-text">Information of {{ project.data.projectName }}</p>
@@ -21,7 +25,9 @@
           class="btn btn-primary ml-4 mr-4"
           >Update</nuxt-link
         >
-        <button class="btn btn-danger mr-3" @click="deleteRecord()">Delete</button>
+        <button class="btn btn-danger mr-3" @click="deleteRecord()">
+          Delete
+        </button>
       </div>
     </div>
   </div>

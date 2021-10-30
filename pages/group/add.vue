@@ -12,7 +12,7 @@
               v-model="roleGroup"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors}"
+              :class="{ 'is-invalid': errors }"
             />
             <div v-if="errors" class="invalid-feedback">
               {{ errors.message }}
@@ -25,7 +25,7 @@
               v-model="groupName"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors}"
+              :class="{ 'is-invalid': errors }"
             />
             <div v-if="errors" class="invalid-feedback">
               {{ errors.message }}

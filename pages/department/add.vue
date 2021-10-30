@@ -12,7 +12,7 @@
               v-model="deptId"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors}"
+              :class="{ 'is-invalid': errors }"
             />
             <div v-if="errors" class="invalid-feedback">
               {{ errors.message }}
@@ -25,7 +25,7 @@
               v-model="deptName"
               type="text"
               class="form-control"
-              :class="{ 'is-invalid': errors}"
+              :class="{ 'is-invalid': errors }"
             />
             <div v-if="errors" class="invalid-feedback">
               {{ errors.message }}
